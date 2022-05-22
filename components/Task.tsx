@@ -14,11 +14,14 @@ const getTime = (timestamp: number) => {
 	return (d.toString().split(' ').slice(1, 5).join(' '));
 }
 
-export default function Task({ todo, inserted }: updateTask) {
+interface Props {
+	children: JSX.Element | JSX.Element[]
+}
+
+export default function Task({ children }: Props) {
 	return (
-		<div>
-			<h2>{todo}</h2>
-			<span>{inserted}</span>
+		<div className="w-[80%] flex justify-between">
+			{children}
 		</div>
 	)
 }

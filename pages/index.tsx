@@ -8,6 +8,7 @@ import { ObjectId } from "mongodb";
 import {IoTrashOutline} from "react-icons/io5";
 import {HiOutlinePencil} from "react-icons/hi";
 import {BiSave} from 'react-icons/bi'
+import Task from "../components/Task";
 
 interface Data {
   _id: ObjectId;
@@ -19,7 +20,7 @@ interface Data {
 const Home: NextPage = () => {
   const [data, setData] = useState<Array<Data>>([]);
   const [value, setValue] = useState("");
-  const [invalidData, setinvalidData] = useState(true);
+  const [invalidData, setinvalidData] = useState<boolean>(true);
   const [editing, setEditing] = useState<{
     id?: ObjectId | null;
     text?: string;
@@ -96,7 +97,7 @@ const Home: NextPage = () => {
         <ul className="m-4 text-lg">
           {data?.length > 0 &&
             data.map((todo, index) => (
-              <li key={index} className="p-2 flex items-center">
+              <li key={index}>
                 {todo._id == editing?.id ? (
                   <input
                     value={editing?.text || ""}
